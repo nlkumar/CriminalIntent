@@ -5,7 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-public class CrimeActivity extends FragmentActivity {
+/**
+ * Created by Nirmal on 01/02/2016.
+ */
+public abstract class SingleFragmentActivity extends FragmentActivity {
+
+    public abstract Fragment createFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,13 +19,10 @@ public class CrimeActivity extends FragmentActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
-
         if(fragment == null){
-            CrimeFragment crimeFragment = new CrimeFragment();
-            fm.beginTransaction().add(R.id.fragment_container, crimeFragment).commit();
+            fragment = createFragment();
+
+            fm.beginTransaction().add(R.id.fragment_container, fragment).commit();
         }
-
     }
-
-
 }
