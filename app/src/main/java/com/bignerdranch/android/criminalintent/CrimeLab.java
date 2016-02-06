@@ -1,7 +1,5 @@
 package com.bignerdranch.android.criminalintent;
 
-import android.text.format.DateUtils;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +13,9 @@ public class CrimeLab {
     private static CrimeLab sCrimeLab = new CrimeLab();
     private List<Crime> mCrimes = new ArrayList<>();
 
-    private CrimeLab(){
-        for(int i=0;i<20;i++){
-            Crime crime = new Crime("Crime # "+i, new Date(), i%2 == 0);
+    private CrimeLab() {
+        for (int i = 0; i < 20; i++) {
+            Crime crime = new Crime("Crime # " + i, new Date(), i % 2 == 0);
             mCrimes.add(crime);
 
         }
@@ -35,12 +33,14 @@ public class CrimeLab {
         return mCrimes;
     }
 
-    public Crime getCrime(UUID crimeId){
-        for(Crime crime:mCrimes){
-            if(crime.getId().equals(crimeId)){
+    public Crime getCrime(UUID crimeId) {
+        for (Crime crime : mCrimes) {
+            if (crime.getId().equals(crimeId)) {
                 return crime;
             }
         }
+
+        return null;
     }
 
     public void addCrime(Crime crime) {
